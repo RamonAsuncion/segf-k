@@ -1,0 +1,14 @@
+SegF-k
+---
+
+A web development framework writte in in C.
+
+Tasks
+* Routing - define routes that map URLS to functions.
+* Middleware - support for processing requests and responses through
+middle ware functions.
+* Templating - A simple templating engine for rendering dynamic HTML.
+* Data Handling - Basic support for JSON and form data parsing.
+* Session Management - Handling user session and cookies
+* Static File Serving - capacility to serve static assets (CSS, JS, images)
+
