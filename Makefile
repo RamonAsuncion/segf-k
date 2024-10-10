@@ -14,7 +14,7 @@ BIN=./bin
 vpath %.h ./include
 vpath %.c ./src
 
-EXECS = main
+EXECS = segfk
 
 all: mkpaths $(EXECS)
 
@@ -24,9 +24,9 @@ mkpaths:
 doc:
 	doxygen
 
-main: main.c
+segfk: segfk.c
 	@ mkdir -p $(BIN)
-	$(CC) $(CFLAGS) $(SRC)/main.c -o $(BIN)/$@ $(LDFLAGS)
+	$(CC) $(CFLAGS) $(SRC)/segfk.c -o $(BIN)/$@ $(LDFLAGS)
 
 .PHONY: clean
 clean:
