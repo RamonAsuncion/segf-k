@@ -1,34 +1,17 @@
-CC=gcc
-CFLAGS=-I./include -std=gnu99 -Wall -g #-DDEBUG
-LDFLAGS=
+CFLAGS=-Isrc -Wall -Wextra # -g -DDEBUG
+SRC=src
+BIN=bin
 
-#CC=g++ -I ./include
-#CFLAGS=-std=c++20 -Wall -g #-DDEBUG
+demo: src/main.c src/segfk.c src/segfk.h | mkbin
+	$(CC) $(CFLAGS) src/main.c src/segfk.c -o $(BIN)/demo
 
-INC=./include
-SRC=./src
-OBJ=./obj
-DOC=./doc
-BIN=./bin
-
-vpath %.h ./include
-vpath %.c ./src
-
-EXECS = segfk
-
-all: mkpaths $(EXECS)
-
-mkpaths:
-	@ mkdir -p $(OBJ)
+mkbin:
 	@ mkdir -p $(BIN)
+
 doc:
 	doxygen
 
-segfk: segfk.c
-	@ mkdir -p $(BIN)
-	$(CC) $(CFLAGS) $(SRC)/segfk.c -o $(BIN)/$@ $(LDFLAGS)
-
-.PHONY: clean
+.PHONY: demo mkbin doc clean
 clean:
-	/bin/rm -rf $(BIN)/* $(OBJ)/* core* *~ $(SRC)/*~ $(INC)/*~ $(DOC)/*
+	@ rm -rf $(BIN)/* core* *~ src/*~ docs/* *.dSYM
 
